@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const blogsRouter = require('./controllers/blogs')
 require('dotenv').config()
+require('express-async-errors')
 const logger = require('./utils/logger')
 const config = require('./utils/config')
 const express = require('express')
@@ -15,7 +16,7 @@ morgan.token("body", (req) => {
 
 mongoose.set('strictQuery', false)
 
-mongoose.connect(config.MONGODB_URI)
+mongoose.connect(config.MONGODB_URI )
 .then(() => {
     logger.info('Connected to MONGODB')
 })
